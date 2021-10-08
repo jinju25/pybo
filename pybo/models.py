@@ -7,7 +7,7 @@ from django.db import models
 
 class Question(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    subject = models.CharField(max_length=10)
+    subject = models.CharField(max_length=100)
     # 글자수의 길이가 제한된 텍스트는 CharField를 사용해야함함
     content = models.TextField()
     create_date = models.DateTimeField()
