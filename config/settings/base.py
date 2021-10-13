@@ -122,7 +122,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    BASE_DIR / 'Path(__file__).resolve().parent.parent.parent',
 ]
 
 # 로그인 성공후 이동하는 URL
