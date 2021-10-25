@@ -12,6 +12,7 @@ urlpatterns = [
          base_views.index, name='index'),
     path('<int:question_id>/',
          base_views.detail, name='detail'),
+    path('permission_guide/', base_views.permission_guide, name='permission_guide'),
 
 
     # question_views.py

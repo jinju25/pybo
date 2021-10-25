@@ -14,6 +14,11 @@ class Question(models.Model):
     modify_date = models.DateTimeField(null=True, blank=True)
     voter = models.ManyToManyField(User, related_name='voter_question')
 
+    class Meta:
+        permissions = [
+            ('can_view_list', 'Can View List')
+        ]
+
     def __str__(self):
         return self.subject
 

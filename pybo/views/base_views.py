@@ -1,10 +1,13 @@
 
+from django.contrib.auth.decorators import login_required, permission_required
 
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from ..models import Question, Answer, Comment
 from django.core.paginator import Paginator
 
 
+@login_required(login_url='common:login')
+@permission_required('pybo.can_view_list', login_url='pybo:permission_guide')
 def detail(request, question_id):
     """
     pybo 내용 출력
@@ -12,6 +15,8 @@ def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     context = {'question': question}
     return render(request, 'pybo/question_detail.html', context)
+
+
 
 def index(request):
     """
@@ -29,3 +34,9 @@ def index(request):
 
     context = {'question_list': page_obj}
     return render(request, 'pybo/question_list.html', context)
+
+def permission_guide(request):
+    """
+    pybo 직원 권한
+    """
+    return render(request, 'pybo/permission_guide.html')
